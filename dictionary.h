@@ -10,7 +10,7 @@ struct node {
 
 struct hash_table{
 	int size;
-	node **chain;
+	struct node **chain;
 };
 
 struct node *new_node(char *key);
