@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId : '587193174786753',
+				xfbml : true,
+				version : 'v2.7'
+			});
+		 FB.api('/glassanimals/events?access_token=EAACEdEose0cBAIjsS15AobGRsmNDxqr6y69M8p6kWzv4XFZAUc8hTS0CXIYscgekU2LkOuSBgb9ZCF7JqZCHIyMP8G6J7xS1a0ZC36zumaVVFMg5jK0ZCVfwWKMVqeY8TuREyM48CDbrtkzx6NmWgeiEnI7qjdZCxE5rY7candxgZDZD', 'GET', {"fields":"name, place,start_time,end_time"}, 
+		 function (response){
+		 	var eventData = [];
+			for (key in response.data){
+				var d = new Date(response.data[key]["start_time"]);
+				eventData.push({location: response.data[key]["name"], date: d);
+		  	}
+			eventData.sort(function(a,b){return a.date - b.date});
+			for (i = 0; i < eventData.length; i++){
+				alert(eventData[i].location + "\n" + eventData[i].date.toLocaleString);
+			}
+		  })};
+		(function (d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if(d.getElementById(id)) {
+			return;
+		  }
+		  js = d.createElement(s);
+	    	  js.id = id;
+		  js.src = "//connect.facebook.net/en_US/sdk.js";
+		  fjs.parentNode.insertBefore(js, fjs);
+                 } (document, 'script', 'facebook-jssdk'));
+	</script>
+
+</head>
+<title>TourSyncTestPage</title>
+<body>
+
+</body>
+</html>
